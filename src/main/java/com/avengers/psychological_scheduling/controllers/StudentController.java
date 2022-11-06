@@ -2,8 +2,6 @@ package com.avengers.psychological_scheduling.controllers;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -21,47 +19,47 @@ import com.avengers.psychological_scheduling.services.StudentService;
 @RequestMapping("/students")
 public class StudentController implements UserController<UserModel> {
 
-	final StudentService studentService;
+  final StudentService studentService;
 
-	public StudentController( StudentService studentService ){
-		this.studentService = studentService;
-	}
+  public StudentController(StudentService studentService) {
+    this.studentService = studentService;
+  }
 
-	@Override
-	public ResponseEntity<Object> addUserToSystem(UserModel user) {
-		return null;
-	}
+  @Override
+  public ResponseEntity<Object> addUserToSystem(UserModel user) {
+    return null;
+  }
 
-	@GetMapping
-	public Page<StudentModel> searchAllUser(Pageable pageable) {
-		
-		return studentService.findAllStudent(pageable);
-	}
+  @GetMapping
+  public Page<StudentModel> searchAllUser(Pageable pageable) {
 
-	@GetMapping("/searchUser/{name}")
-	public ResponseEntity<Object> searchUserByName(@PathVariable("name") String name) {
+    return studentService.findAllStudent(pageable);
+  }
 
-		List<StudentModel> listStudent = studentService.findStudentByName("%" + name + "%");
+  @GetMapping("/searchUser/{name}")
+  public ResponseEntity<Object> searchUserByName(@PathVariable("name") String name) {
 
-		String listStudentString = "";
+    List<StudentModel> listStudent = studentService.findStudentByName("%" + name + "%");
 
-		for( StudentModel student : listStudent ){
+    String listStudentString = "";
 
-			listStudentString += "Nome: " + student.getName() + "<br>";
-			listStudentString += "Nome: " + student.getEmail() + "<br><br>";
-		}
-		
-		return ResponseEntity.status(HttpStatus.OK).body(listStudentString);
-	}
+    for (StudentModel student : listStudent) {
 
-	@Override
-	public ResponseEntity<Object> searchAllUserByRegistration(int registration) {
-		return null;
-	}
+      listStudentString += "Nome: " + student.getName() + "<br>";
+      listStudentString += "Nome: " + student.getEmail() + "<br><br>";
+    }
 
-	@Override
-	public ResponseEntity<Object> updateDataOfUser(int registration, UserModel user) {
-		return null;
-	}
+    return ResponseEntity.status(HttpStatus.OK).body(listStudentString);
+  }
+
+  @Override
+  public ResponseEntity<Object> searchAllUserByRegistration(int registration) {
+    return null;
+  }
+
+  @Override
+  public ResponseEntity<Object> updateDataOfUser(int registration, UserModel user) {
+    return null;
+  }
 
 }

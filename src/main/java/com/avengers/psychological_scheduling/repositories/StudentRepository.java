@@ -11,6 +11,6 @@ import com.avengers.psychological_scheduling.models.users.StudentModel;
 @Repository
 public interface StudentRepository extends JpaRepository<StudentModel, UUID> {
 
-    public List<StudentModel> findStudentByNameLike(String name);
-    
+  public List<StudentModel> findStudentByNameLike(String name);
+
 }

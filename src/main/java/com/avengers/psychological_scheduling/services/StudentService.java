@@ -12,17 +12,17 @@ import com.avengers.psychological_scheduling.repositories.StudentRepository;
 @Service
 public class StudentService {
 
-    final StudentRepository studentRepository;
+  final StudentRepository studentRepository;
 
-    public StudentService(StudentRepository studentRepository){
-        this.studentRepository = studentRepository;
-    }
-    
-    public Page<StudentModel> findAllStudent(Pageable pageable) {
-        return studentRepository.findAll(pageable);
-    }
+  public StudentService(StudentRepository studentRepository) {
+    this.studentRepository = studentRepository;
+  }
 
-    public List<StudentModel> findStudentByName(String name){
-        return studentRepository.findStudentByNameLike(name);
-    }
+  public Page<StudentModel> findAllStudent(Pageable pageable) {
+    return studentRepository.findAll(pageable);
+  }
+
+  public List<StudentModel> findStudentByName(String name) {
+    return studentRepository.findStudentByNameLike(name);
+  }
 }
