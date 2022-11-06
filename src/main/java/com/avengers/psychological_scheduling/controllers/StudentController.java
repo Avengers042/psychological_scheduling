@@ -12,12 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.avengers.psychological_scheduling.models.users.StudentModel;
-import com.avengers.psychological_scheduling.models.users.UserModel;
 import com.avengers.psychological_scheduling.services.StudentService;
 
 @RestController
 @RequestMapping("/students")
-public class StudentController implements UserController<UserModel> {
+public class StudentController implements UserController<StudentModel> {
 
   final StudentService studentService;
 
@@ -26,7 +25,7 @@ public class StudentController implements UserController<UserModel> {
   }
 
   @Override
-  public ResponseEntity<Object> addUserToSystem(UserModel user) {
+  public ResponseEntity<Object> addUserToSystem(StudentModel user) {
     return null;
   }
 
@@ -58,7 +57,7 @@ public class StudentController implements UserController<UserModel> {
   }
 
   @Override
-  public ResponseEntity<Object> updateDataOfUser(int registration, UserModel user) {
+  public ResponseEntity<Object> updateDataOfUser(int registration, StudentModel user) {
     return null;
   }
 
