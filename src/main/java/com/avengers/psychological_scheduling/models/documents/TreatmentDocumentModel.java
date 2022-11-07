@@ -4,16 +4,20 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
 
 import com.avengers.psychological_scheduling.models.users.PatientModel;
 import com.avengers.psychological_scheduling.models.users.StudentModel;
 
+@Entity
+@Table(name = "treatment_document")
 @MappedSuperclass
 public abstract class TreatmentDocumentModel implements Serializable {
   @Id
