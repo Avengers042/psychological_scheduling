@@ -9,7 +9,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class UserModel implements Serializable {
   @Id
-  private int registration;
+  private Long registration;
   @Column(nullable = false, length = 100)
   private String name;
   @Column(nullable = false, length = 100)
@@ -20,13 +20,13 @@ public abstract class UserModel implements Serializable {
   private int job;
   @Column(nullable = false)
   private boolean activationStatus;
-  @Column(nullable = false, unique = true, length = 18)
+  @Column(nullable = false, length = 18)
   private int signature;
 
   public UserModel() {
   }
 
-  public UserModel(int registration, String name, String email, String password, int job, boolean activationStatus,
+  public UserModel(Long registration, String name, String email, String password, int job, boolean activationStatus,
       int signature) {
     this.registration = registration;
     this.name = name;
@@ -37,11 +37,11 @@ public abstract class UserModel implements Serializable {
     this.signature = signature;
   }
 
-  public int getRegistration() {
+  public Long getRegistration() {
     return registration;
   }
 
-  public void setRegistration(int registration) {
+  public void setRegistration(Long registration) {
     this.registration = registration;
   }
 

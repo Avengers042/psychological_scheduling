@@ -9,7 +9,7 @@ public class SupervisorModel extends UserModel {
   public SupervisorModel() {
   }
 
-  public SupervisorModel(int registration, String name, String email, String password, int job,
+  public SupervisorModel(Long registration, String name, String email, String password, int job,
       boolean activationStatus, int signature) {
     super(registration, name, email, password, job, activationStatus, signature);
   }
