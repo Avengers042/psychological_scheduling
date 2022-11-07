@@ -3,9 +3,10 @@ package com.avengers.psychological_scheduling.dtos.documents;
 import java.time.ZonedDateTime;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class TherapyDto {
-  @NotBlank
+  @NotNull
   private ZonedDateTime date;
   @NotBlank
   private String description;

@@ -2,6 +2,7 @@ package com.avengers.psychological_scheduling.dtos.users;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class SupervisorDto {
@@ -13,11 +14,11 @@ public class SupervisorDto {
   @NotBlank
   @Size(min = 8)
   private String password;
-  @NotBlank
+  @NotNull
   private int job;
-  @NotBlank
+  @NotNull
   private boolean activationStatus;
-  @NotBlank
+  @NotNull
   private int signature;
 
   public String getName() {
