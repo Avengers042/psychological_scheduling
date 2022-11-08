@@ -3,6 +3,7 @@ package com.avengers.psychological_scheduling.dtos.users;
 import java.util.Set;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.UniqueElements;
@@ -16,7 +17,7 @@ public class PatientDto {
   private String CPF;
   @NotBlank
   private String name;
-  @NotBlank
+  @NotNull
   private int chart;
   @NotBlank
   private String personalTelephone;
@@ -24,7 +25,7 @@ public class PatientDto {
   private String contactTelephone;
   @NotBlank
   private String sex;
-  @NotBlank
+  @NotNull
   private int age;
   @NotBlank
   private String address;
@@ -34,12 +35,12 @@ public class PatientDto {
   private String educationLevel;
   @NotBlank
   private String job;
-  @NotBlank
+  @NotNull
   @UniqueElements
   private Set<CoupleModel> coupleId;
   @NotBlank
   private String chiefComplaint;
-  @NotBlank
+  @NotNull
   @UniqueElements
   private Set<TherapyModel> therapyId;
   @NotBlank

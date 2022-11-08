@@ -2,11 +2,14 @@ package com.avengers.psychological_scheduling.dtos.users;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.avengers.psychological_scheduling.models.users.SupervisorModel;
 
 public class StudentDto {
+  @NotNull
+  private Long registration;
   @NotBlank
   private String name;
   @NotBlank
@@ -15,14 +18,21 @@ public class StudentDto {
   @NotBlank
   @Size(min = 8)
   private String password;
-  @NotBlank
+  @NotNull
   private int job;
-  @NotBlank
+  @NotNull
   private boolean activationStatus;
-  @NotBlank
+  @NotNull
   private int signature;
-  @NotBlank
   private SupervisorModel supervisorRegistration;
+
+  public Long getRegistration() {
+    return registration;
+  }
+
+  public void setRegistration(Long registration) {
+    this.registration = registration;
+  }
 
   public String getName() {
     return name;

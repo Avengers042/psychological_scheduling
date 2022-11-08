@@ -1,11 +1,12 @@
 package com.avengers.psychological_scheduling.dtos.documents;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class CoupleDto {
   @NotBlank
   private String name;
-  @NotBlank
+  @NotNull
   private int age;
   @NotBlank
   private String job;

@@ -3,8 +3,8 @@ package com.avengers.psychological_scheduling.dtos.documents;
 import java.time.ZonedDateTime;
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.UniqueElements;
 
@@ -15,24 +15,24 @@ import com.avengers.psychological_scheduling.models.users.SupervisorModel;
 
 public class PsychologicalEvolutionSheetDto {
   @UniqueElements
-  @NotBlank
+  @NotNull
   private PatientModel patientId;
-  @NotBlank
+  @NotNull
   private ZonedDateTime dateMedicalAppointment;
   @NotBlank
   private String evaluationDocument;
   @UniqueElements
-  @NotBlank
+  @NotNull
   private StudentModel studentRegistration;
   @UniqueElements
-  @NotBlank
+  @NotNull
   private SupervisorModel signatureSupervisor;
   @NotBlank
   private String observation;
-  @Column(nullable = false)
+  @NotNull
   private boolean isIndividual;
   @UniqueElements
-  @NotBlank
+  @NotNull
   private Set<CompanionModel> companionModelId;
 
   public PatientModel getPatientId() {
