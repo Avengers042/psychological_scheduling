@@ -3,8 +3,10 @@ package com.avengers.psychological_scheduling.models.documents;
 import java.time.ZonedDateTime;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -24,13 +26,13 @@ public class PsychologicalEvolutionSheetModel extends TreatmentDocumentModel {
   private String observation;
   @Column(nullable = false)
   private boolean isIndividual;
-  @OneToMany(mappedBy = "psychologicalEvolutionSheetModel")
+  @OneToMany(mappedBy = "psychologicalEvolutionSheetModel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   private Set<CompanionModel> companionModelId;
 
   public PsychologicalEvolutionSheetModel() {
   }
 
-  public PsychologicalEvolutionSheetModel(int id, PatientModel patientId, ZonedDateTime dateMedicalAppointment,
+  public PsychologicalEvolutionSheetModel(Long id, PatientModel patientId, ZonedDateTime dateMedicalAppointment,
       String evaluationDocument, String userRegistrationOfLastModification2, StudentModel studentRegistration,
       SupervisorModel signatureSupervisor, String observation, boolean isIndividual,
       Set<CompanionModel> companionModelId) {

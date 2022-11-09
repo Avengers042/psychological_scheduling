@@ -16,7 +16,7 @@ import com.avengers.psychological_scheduling.models.users.PatientModel;
 @Table(name = "Therapy")
 public class TherapyModel {
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
   @Column(nullable = false)
   private ZonedDateTime date;
