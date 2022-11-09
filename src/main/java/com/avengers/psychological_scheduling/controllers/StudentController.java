@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.avengers.psychological_scheduling.dtos.users.StudentDto;
+import com.avengers.psychological_scheduling.middlewares.HashPassword;
 import com.avengers.psychological_scheduling.models.users.StudentModel;
 import com.avengers.psychological_scheduling.services.StudentService;
 
@@ -40,6 +41,11 @@ public class StudentController {
     BeanUtils.copyProperties(studentDto, studentModel);
     studentModel.setActivationStatus(true);
     studentModel.setJob(1);
+    studentModel.setSaltPassword(HashPassword.getSalt());
+    studentModel.setPassword(
+        HashPassword.hash(studentModel.getPassword(),
+            studentModel.getSaltPassword()));
+
     return ResponseEntity.status(HttpStatus.CREATED).body(studentService.save(studentModel));
   }
 
@@ -78,6 +84,10 @@ public class StudentController {
     StudentModel studentModel = new StudentModel();
     BeanUtils.copyProperties(studentDto, studentModel);
     studentModel.setRegistration(studentModelOptional.get().getRegistration());
+    studentModel.setSaltPassword(studentModelOptional.get().getSaltPassword());
+    studentModel.setPassword(
+        HashPassword.hash(studentModel.getPassword(),
+            studentModel.getSaltPassword()));
     return ResponseEntity.status(HttpStatus.OK).body(studentService.save(studentModel));
   }
 
