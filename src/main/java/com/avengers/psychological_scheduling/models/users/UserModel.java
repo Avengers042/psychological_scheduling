@@ -22,12 +22,14 @@ public abstract class UserModel implements Serializable {
   private boolean activationStatus;
   @Column(nullable = false, length = 18)
   private int signature;
+  @Column
+  private String saltPassword;
 
   public UserModel() {
   }
 
   public UserModel(Long registration, String name, String email, String password, int job, boolean activationStatus,
-      int signature) {
+      int signature, String saltPassword) {
     this.registration = registration;
     this.name = name;
     this.email = email;
@@ -35,6 +37,7 @@ public abstract class UserModel implements Serializable {
     this.job = job;
     this.activationStatus = activationStatus;
     this.signature = signature;
+    this.saltPassword = saltPassword;
   }
 
   public Long getRegistration() {
@@ -91,6 +94,14 @@ public abstract class UserModel implements Serializable {
 
   public void setSignature(int signature) {
     this.signature = signature;
+  }
+
+  public String getSaltPassword() {
+    return saltPassword;
+  }
+
+  public void setSaltPassword(String saltPassword) {
+    this.saltPassword = saltPassword;
   }
 
 }

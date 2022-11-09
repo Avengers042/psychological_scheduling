@@ -10,8 +10,8 @@ public class SupervisorModel extends UserModel {
   }
 
   public SupervisorModel(Long registration, String name, String email, String password, int job,
-      boolean activationStatus, int signature) {
-    super(registration, name, email, password, job, activationStatus, signature);
+      boolean activationStatus, int signature, String saltPassword) {
+    super(registration, name, email, password, job, activationStatus, signature, saltPassword);
   }
 
 }
