@@ -15,13 +15,9 @@ public class StudentModel extends UserModel {
   public StudentModel() {
   }
 
-  public StudentModel(SupervisorModel supervisorRegistration) {
-    this.supervisorRegistration = supervisorRegistration;
-  }
-
   public StudentModel(Long registration, String name, String email, String password, int job, boolean activationStatus,
-      int signature, SupervisorModel supervisorRegistration) {
-    super(registration, name, email, password, job, activationStatus, signature);
+      int signature, String saltPassword, SupervisorModel supervisorRegistration) {
+    super(registration, name, email, password, job, activationStatus, signature, saltPassword);
     this.supervisorRegistration = supervisorRegistration;
   }
 
