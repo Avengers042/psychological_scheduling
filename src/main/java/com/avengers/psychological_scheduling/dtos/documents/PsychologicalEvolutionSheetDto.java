@@ -1,39 +1,26 @@
 package com.avengers.psychological_scheduling.dtos.documents;
 
-import java.time.ZonedDateTime;
-import java.util.Set;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
-import com.avengers.psychological_scheduling.models.documents.CompanionModel;
 import com.avengers.psychological_scheduling.models.users.PatientModel;
 import com.avengers.psychological_scheduling.models.users.StudentModel;
 import com.avengers.psychological_scheduling.models.users.SupervisorModel;
 
 public class PsychologicalEvolutionSheetDto {
-  @UniqueElements
-  @NotNull
   private PatientModel patientId;
-  @NotNull
-  private ZonedDateTime dateMedicalAppointment;
   @NotBlank
   private String evaluationDocument;
-  @UniqueElements
+  @NotBlank
+  private String userRegistrationOfLastModification;
   @NotNull
   private StudentModel studentRegistration;
-  @UniqueElements
-  @NotNull
-  private SupervisorModel signatureSupervisor;
+  private SupervisorModel signatureSupervisor; // using id to search for supervisor and get signature
   @NotBlank
   private String observation;
   @NotNull
   private boolean isIndividual;
-  @UniqueElements
-  @NotNull
-  private Set<CompanionModel> companionModelId;
+  private int companionModelId;
 
   public PatientModel getPatientId() {
     return patientId;
@@ -41,14 +28,6 @@ public class PsychologicalEvolutionSheetDto {
 
   public void setPatientId(PatientModel patientId) {
     this.patientId = patientId;
-  }
-
-  public ZonedDateTime getDateMedicalAppointment() {
-    return dateMedicalAppointment;
-  }
-
-  public void setDateMedicalAppointment(ZonedDateTime dateMedicalAppointment) {
-    this.dateMedicalAppointment = dateMedicalAppointment;
   }
 
   public String getEvaluationDocument() {
@@ -59,12 +38,24 @@ public class PsychologicalEvolutionSheetDto {
     this.evaluationDocument = evaluationDocument;
   }
 
+  public String getUserRegistrationOfLastModification() {
+    return userRegistrationOfLastModification;
+  }
+
+  public void setUserRegistrationOfLastModification(String userRegistrationOfLastModification) {
+    this.userRegistrationOfLastModification = userRegistrationOfLastModification;
+  }
+
   public StudentModel getStudentRegistration() {
     return studentRegistration;
   }
 
   public void setStudentRegistration(StudentModel studentRegistration) {
     this.studentRegistration = studentRegistration;
+  }
+
+  public SupervisorModel getSignatureSupervisor() {
+    return signatureSupervisor;
   }
 
   public void setSignatureSupervisor(SupervisorModel signatureSupervisor) {
@@ -87,11 +78,12 @@ public class PsychologicalEvolutionSheetDto {
     this.isIndividual = isIndividual;
   }
 
-  public Set<CompanionModel> getCompanionModelId() {
+  public int getCompanionModelId() {
     return companionModelId;
   }
 
-  public void setCompanionModelId(Set<CompanionModel> companionModelId) {
+  public void setCompanionModelId(int companionModelId) {
     this.companionModelId = companionModelId;
   }
+
 }

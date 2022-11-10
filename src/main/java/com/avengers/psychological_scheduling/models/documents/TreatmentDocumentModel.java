@@ -17,8 +17,8 @@ import com.avengers.psychological_scheduling.models.users.StudentModel;
 @MappedSuperclass
 public abstract class TreatmentDocumentModel implements Serializable {
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
-  private int id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
   @ManyToOne
   @JoinColumn(name = "patientId", referencedColumnName = "CPF")
   private PatientModel patientId;
@@ -35,7 +35,7 @@ public abstract class TreatmentDocumentModel implements Serializable {
   public TreatmentDocumentModel() {
   }
 
-  public TreatmentDocumentModel(int id, PatientModel patientId, ZonedDateTime dateMedicalAppointment,
+  public TreatmentDocumentModel(Long id, PatientModel patientId, ZonedDateTime dateMedicalAppointment,
       String evaluationDocument, String userRegistrationOfLastModification2, StudentModel studentRegistration) {
     this.id = id;
     this.patientId = patientId;
@@ -45,11 +45,11 @@ public abstract class TreatmentDocumentModel implements Serializable {
     this.studentRegistration = studentRegistration;
   }
 
-  public int getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
