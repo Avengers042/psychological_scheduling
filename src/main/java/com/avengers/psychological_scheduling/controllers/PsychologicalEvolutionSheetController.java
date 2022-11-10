@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -61,5 +62,21 @@ public class PsychologicalEvolutionSheetController {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Psychological Evolution Sheet not found.");
 
     return ResponseEntity.status(HttpStatus.OK).body(psychologicalEvolutionSheetModelOptional.get());
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<Object> updateDataOfUser(@PathVariable(value = "id") Long id,
+      @RequestBody @Valid PsychologicalEvolutionSheetDto psychologicalEvolutionSheetDto) {
+    Optional<PsychologicalEvolutionSheetModel> psychologicalEvolutionSheetModelOptional = psychologicalEvolutionSheetService
+        .findById(id);
+    if (!psychologicalEvolutionSheetModelOptional.isPresent())
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found.");
+
+    PsychologicalEvolutionSheetModel studentModel = new PsychologicalEvolutionSheetModel();
+    BeanUtils.copyProperties(psychologicalEvolutionSheetDto, studentModel);
+    studentModel.setId(psychologicalEvolutionSheetModelOptional.get().getId());
+    studentModel.setDateMedicalAppointment(psychologicalEvolutionSheetModelOptional.get().getDateMedicalAppointment());
+
+    return ResponseEntity.status(HttpStatus.OK).body(psychologicalEvolutionSheetService.save(studentModel));
   }
 }
