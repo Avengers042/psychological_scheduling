@@ -60,11 +60,11 @@ public class PsychologicalEvolutionSheetModel extends TreatmentDocumentModel {
     this.observation = observation;
   }
 
-  public boolean isIndividual() {
+  public boolean getIsIndividual() {
     return isIndividual;
   }
 
-  public void setIndividual(boolean isIndividual) {
+  public void setIsIndividual(boolean isIndividual) {
     this.isIndividual = isIndividual;
   }
 
